@@ -1,5 +1,22 @@
 const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
+// Mapeamento de números para nomes de departamentos
+const departamentos = {
+    '1': 'Tecnologia_da_informacao',
+    '2': 'Recursos_Humanos',
+    '3': 'Contabilidade',
+    '4': 'Contas_a_Receber',
+    '5': 'Contas_a_Pagar',
+    '6': 'Comercial',
+    '7': 'Estoque',
+    '8': 'Oficina',
+    '9': 'Reconferencia',
+    '10': 'Balcao_de_Vendas',
+    '11': 'Producao',
+    '12': 'Diretoria',
+    '13': 'TST'
+};
+
 // Função para dividir texto em múltiplas linhas
 function splitTextIntoLines(font, text, fontSize, maxWidth) {
     const words = text.split(' ');
@@ -31,6 +48,8 @@ async function modifyPdf() {
         return;
     }
 
+    // Obter o nome do departamento a partir do número
+    const nomeDepartamento = departamentos[departamentoNumero];
     const url = `./assets/placa_${departamentoNumero}.pdf`;
     
     try {
@@ -47,21 +66,21 @@ async function modifyPdf() {
 
         // Configurações de layout
         const fontSize = 32;
-        const maxWidth = width - 40; // Largura máxima com margens
+        const maxWidth = width - 40;
         const lineHeight = fontSize * 1.2;
         const startY = height - 390;
 
         // Dividir o texto em múltiplas linhas
         const lines = splitTextIntoLines(helveticaBold, nome, fontSize, maxWidth);
 
-        // Desenhar cada linha (a primeira linha fica na posição Y fixa)
+        // Desenhar cada linha
         lines.forEach((line, index) => {
             const textWidth = helveticaBold.widthOfTextAtSize(line, fontSize);
             const centerX = (width - textWidth) / 2;
             
             firstPage.drawText(line, {
                 x: centerX,
-                y: startY - (index * lineHeight), // Subtrai para linhas adicionais
+                y: startY - (index * lineHeight),
                 size: fontSize,
                 font: helveticaBold,
                 color: rgb(0, 0, 0),
@@ -69,7 +88,7 @@ async function modifyPdf() {
         });
 
         const pdfBytes = await pdfDoc.save();
-        download(pdfBytes, `placa_departamento_${departamentoNumero}.pdf`, "application/pdf");
+        download(pdfBytes, `placa_${nomeDepartamento}.pdf`, "application/pdf");
         
     } catch (error) {
         console.error('Erro ao gerar a placa:', error);
