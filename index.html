@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Placas</title>
+    <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.2.6/jquery.inputmask.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <link rel="icon" type="image/png" href="./ast/quill-desenhando-uma-linha.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <h2 id="insert">Gerar Placa</h2>
+
+        <form action="">
+            <div class="input-field">
+                <input type="text" id="nomes" placeholder="Nomes" class="txt" autocomplete="off">
+                <div class="underline"></div>
+            </div>
+
+            <div class="input-field">
+                <select id="departamento" class="txt" autocomplete="off">
+                    <option value="" disabled selected>Selecione um departamento</option>
+                    <option value="1">Tecnologia da informação</option>
+                    <option value="2">Recursos Humanos</option>
+                    <option value="3">Contabilidade</option>
+                    <option value="4">Contas a Receber</option>
+                    <option value="5">Contas a Pagar</option>
+                    <option value="6">Comercial</option>
+                    <option value="7">Estoque</option>
+                    <option value="8">Oficina</option>
+                    <option value="9">Reconferência</option>
+                    <option value="10">Balcão de Vendas</option>
+                    <option value="11">Produção</option>
+                    <option value="12">Diretoria</option>
+                    <option value="13">TST</option>
+                </select>
+                <div class="underline"></div>
+            </div>
+
+            <input type="button" value="Gerar Placa" onclick="modifyPdf()" id="botao" class="meu-botao1">
+        </form>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

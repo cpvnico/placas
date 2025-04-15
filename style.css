@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: rgb(241, 238, 224);
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+main.container {
+    position: relative;
+    width: 350px;
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+main h2 {
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-field {
+    position: relative;
+}
+
+.input-field .underline::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.input-field .underline::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(37, 37, 37, 0.836);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.input-field input:focus ~ .underline::after,
+.input-field select:focus ~ .underline::after {
+    transform: scaleX(1);
+}
+
+.input-field input,
+.input-field select {
+    outline: none;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 0.5rem 0;
+    background: transparent;
+}
+
+.input-field input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.txt {
+    width: 100%;
+}
+
+.meu-botao1 {
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    background-color: rgb(175, 174, 164);
+    border: none;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.meu-botao1:hover {
+    background-color: rgb(165, 164, 154);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
